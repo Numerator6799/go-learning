@@ -7,7 +7,6 @@ import (
 	"strconv" // I was using this to convert integer to string (Itoa function)
 	"strings"
 	"time"
-	//"github.com/divan/num2words"
 )
 
 type deck []string
@@ -16,8 +15,9 @@ func newDeck() deck {
 	//var d deck // alternative to declare deck
 	d := deck{}
 	suits := []string{"Spades", "Hearts", "Diamonds", "Clubs"}
-	specialValues := []string{"Ace", "Jack", "Queen", "King"}
+	specialValues := []string{"Jack", "Queen", "King"}
 	for _, suit := range suits {
+		d = append(d, createCard("Ace", suit))
 		for i := 2; i <= 10; i++ {
 			d = append(d, createCard(strconv.Itoa(i), suit))
 		}
@@ -73,11 +73,11 @@ func loadFromFile(path string) deck {
 
 func (d deck) shuffle() {
 	// Seed the random number generator
-	rand.Seed(time.Now().UnixNano())
-
+	// rand.Seed(time.Now().UnixNano()) // no need to call Seed anymore, do the below instead
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	// Fisher-Yates shuffle algorithm
 	for i := len(d) - 1; i > 0; i-- {
-		j := rand.Intn(i + 1)
+		j := r.Intn(i + 1)
 		d[i], d[j] = d[j], d[i]
 	}
 }

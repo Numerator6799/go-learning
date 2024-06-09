@@ -15,8 +15,8 @@ func main() {
 	fmt.Println(hand)
 	// myDeck.print()
 	fmt.Println(len(myDeck))
-	myDeck.saveToFile("C:\\Tests\\mydeck.txt")
-	myDeck2 := loadFromFile("C:\\Tests\\mydeck3.txt")
+	myDeck.saveToFile("mydeck.txt")
+	myDeck2 := loadFromFile("mydeck.txt")
 	if myDeck2 == nil {
 		fmt.Println("Could not read deck")
 		fmt.Println("Quitting...")
