@@ -1,6 +1,7 @@
 # Go Learning
 
-This repository contains samples of apps written in Golang.
+This repository contains samples of apps written in Golang. Those examples were done coding along with the following sources:
+- "Go: The Complete Developer's Guide" by Stephen Grider 
 
 ## How to use
 Each directory corresponds to a sample application. Ensure you have Go installed, `cd` into a directory and run:
