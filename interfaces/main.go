@@ -2,12 +2,16 @@ package main
 
 import "fmt"
 
-type englishBot struct {
+type bot interface {
+	getGreeting() string
 }
 
-type spanishBot struct {
-}
+type englishBot struct{}
 
+type spanishBot struct{}
+
+// just because those types implement [getGreeting() string] function,
+// then they are considered bots
 func (englishBot) getGreeting() string {
 	return "hello!"
 }
@@ -16,12 +20,8 @@ func (spanishBot) getGreeting() string {
 	return "hola!"
 }
 
-func printGreeting(eb englishBot) {
-	fmt.Print(eb.getGreeting())
-}
-
-func printGreeting2(sb spanishBot) {
-	fmt.Print(sb.getGreeting())
+func printGreeting(b bot) {
+	fmt.Print(b.getGreeting())
 }
 
 func main() {
@@ -29,5 +29,5 @@ func main() {
 	printGreeting(eb)
 
 	sb := spanishBot{}
-	printGreeting2(sb)
+	printGreeting(sb)
 }
